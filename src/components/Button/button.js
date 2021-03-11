@@ -7,7 +7,7 @@ const Container = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${props => (props.secondary ? '#ccc' : '#0aa')};
+  background: ${props => (props.secondary ? '#9bb' : '#0aa')};
   font-weight: bold;
   color: #fff;
   border: 0;
@@ -18,7 +18,6 @@ const Container = styled.button`
 
 function Button({ onClick, children, ...props }) {
   const handleClick = () => {
-    console.log("hit button")
     onClick('hit button');
   }
 

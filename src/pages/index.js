@@ -4,10 +4,12 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic';
 
 import { usePublisher } from '../publisher';
-import styles from '../../styles/Home.module.css'
+// import styles from '../../styles/Home.module.css'
 import Counter from '../components/Counter'
 import Button from '../components/Button';
 import Console from '../components/Console';
+
+const styles = {};
 
 const DynamicComponent = dynamic(
   () => import('../components/Dynamic'),
@@ -39,19 +41,23 @@ function Home() {
           Olazes, tudo bom!?
         </h1>
 
-        <Counter className={styles.center} />
-
+        <Counter />
         <Container>
-          <Button onClick={() => { publish('message', '123 clicado') }}>Clique aqui tbm</Button>
+          <Button onClick={() => { publish('message', '[click] - clique aqui tbm') }}>
+            Clique aqui tbm
+          </Button>
           {!show ? (
-            <Button onClick={() => setShow(true)}> show dynamic</Button>
+            <Button id="dynamicBtn" secondary onClick={() => {
+              publish('message', '[click] - show dynamic');
+              setShow(true);
+            }}>
+              Mostra o dynamic
+            </Button>
           ) :
             (<DynamicComponent />)
           }
         </Container>
-
         <Console />
-        
       </main>
 
       <footer className={styles.footer}>

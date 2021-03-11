@@ -8,6 +8,10 @@ const Container = styled.div`
   margin-top: 20px;
   border: 2px dashed blue;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `
 
 function Counter({ ...props }) {
@@ -15,14 +19,16 @@ function Counter({ ...props }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const msg = `Titulo maneiro [${count}]`
-    publish('message', msg)
-    document.title = msg;
+    if (count > 0) {
+      const msg = `[head] - mudou o título [${count}] vezes`
+      publish('message', msg)
+      document.title = msg;
+    }
   }, [count]);
 
   return (
     <Container data-testid="counter" {...props} >
-      <p>Voce clicou {count} vezes</p>
+      <p>Voce clicou <span data-testid="count">{count}</span> vezes</p>
       <Button id="plus" onClick={() => setCount(count + 1)}>
         Clique aqui
       </Button>

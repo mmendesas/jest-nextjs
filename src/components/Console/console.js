@@ -16,7 +16,9 @@ function Console() {
 
   const scrollToMyRef = () => {
     const lastItem = document.querySelector('#log-messages > li:last-child');
-    if (lastItem) lastItem.scrollIntoView({ behavior: 'smooth' });
+    if (process.browser && lastItem) {
+      lastItem.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   return (
