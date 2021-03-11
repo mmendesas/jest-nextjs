@@ -18,7 +18,7 @@ describe('[Component] Button', () => {
     const { getByTestId } = render(<Button onClick={mockClick}>click me</Button>)
 
     // act
-    const mybutton = getByTestId('btn123');
+    const mybutton = getByTestId('button');
     await fireEvent.click(mybutton);
 
     // assert
@@ -32,7 +32,7 @@ describe('[Component] Button', () => {
     const { getByTestId } = render(<Button>click me</Button>)
 
     // act
-    const mybutton = getByTestId('btn123');
+    const mybutton = getByTestId('button');
     await fireEvent.click(mybutton);
   });
 

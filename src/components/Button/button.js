@@ -1,15 +1,31 @@
 import React from 'react';
+import styled from 'styled-components';
 import { func } from 'prop-types'
+
+
+const Container = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${props => (props.secondary ? '#ccc' : '#0aa')};
+  font-weight: bold;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 10px;
+`
 
 function Button({ onClick, children, ...props }) {
   const handleClick = () => {
+    console.log("hit button")
     onClick('hit button');
   }
 
   return (
-    <button id="btn123" data-testid='btn123' onClick={handleClick} {...props}>
+    <Container id="btn123" data-testid='button' onClick={handleClick} {...props}>
       {children}
-    </button>
+    </Container>
   );
 }
 

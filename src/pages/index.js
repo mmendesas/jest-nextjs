@@ -1,7 +1,31 @@
+import { useState } from 'react';
+import styled from 'styled-components';
 import Head from 'next/head'
-import styles from '../../styles/Home.module.css'
+import dynamic from 'next/dynamic';
 
-export default function Home() {
+import { usePublisher } from '../publisher';
+import styles from '../../styles/Home.module.css'
+import Counter from '../components/Counter'
+import Button from '../components/Button';
+import Console from '../components/Console';
+
+const DynamicComponent = dynamic(
+  () => import('../components/Dynamic'),
+  { loading: () => <p>loading ...</p> }
+)
+
+const Container = styled.div`
+  width: 350px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+function Home() {
+  const { publish } = usePublisher();
+  const [show, setShow] = useState(false);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -10,9 +34,24 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+
         <h1 className={styles.title}>
           Olazes, tudo bom!?
         </h1>
+
+        <Counter className={styles.center} />
+
+        <Container>
+          <Button onClick={() => { publish('message', '123 clicado') }}>Clique aqui tbm</Button>
+          {!show ? (
+            <Button onClick={() => setShow(true)}> show dynamic</Button>
+          ) :
+            (<DynamicComponent />)
+          }
+        </Container>
+
+        <Console />
+        
       </main>
 
       <footer className={styles.footer}>
@@ -21,3 +60,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home;
