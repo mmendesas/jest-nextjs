@@ -31,7 +31,6 @@ describe('[Component] Button', () => {
 
     expect(dynamicComponent).toBeTruthy();
     expect(dynamicComponent.textContent).toEqual('dynamic content');
-    expect(dynamicComponent).toHaveStyleRule('border', '5px dotted green');
   });
 
 });
