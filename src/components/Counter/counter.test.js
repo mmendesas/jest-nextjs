@@ -5,14 +5,14 @@ import Counter from './counter';
 
 import { Provider as MockPublisherProvider } from '../../publisher'
 
-describe('[Component] Counter', () => {
+describe('[Component] Counter Final', () => {
 
   const setup = () => {
     const publish = jest.fn();
     const utils = render(
       <MockPublisherProvider value={{ publish }}>
         <Counter />
-      </MockPublisherProvider>,
+      </MockPublisherProvider>, 
       { container: document.head }
     );
 
@@ -37,7 +37,6 @@ describe('[Component] Counter', () => {
   it('should render correctly [snapshot]', () => {
     const { container } = setup();
     expect(container.firstChild).toMatchSnapshot();
-
     expect(console.error.mock.calls[0][0]).toMatch(/cannot appear as a child/);
   })
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[Component] Counter should render correctly [snapshot] 1`] = `
+exports[`[Component] Counter Final should render correctly [snapshot] 1`] = `
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
