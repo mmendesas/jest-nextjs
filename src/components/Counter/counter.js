@@ -1,18 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+
 import Button from '../Button';
-
+import { Container } from './counter.styles'
 import { usePublisher } from '../../publisher'
-
-const Container = styled.div`
-  margin-top: 20px;
-  border: 2px dashed blue;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`
 
 function Counter({ ...props }) {
   const { publish } = usePublisher();
@@ -20,8 +10,8 @@ function Counter({ ...props }) {
 
   useEffect(() => {
     if (count > 0) {
-      const msg = `[head] - mudou o título [${count}] vezes`
-      publish('message', msg)
+      const msg = `mudou o título [${count}] vezes`
+      publish('message', `[head] - ${msg}`)
       document.title = msg;
     }
   }, [count]);

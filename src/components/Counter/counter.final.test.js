@@ -61,7 +61,7 @@ describe('[Component] Counter', () => {
     await fireEvent.click(plusBtn);
 
     const title = container.querySelector('title');
-    expect(title.textContent).toEqual('[head] - mudou o título [1] vezes')
+    expect(title.textContent).toEqual('mudou o título [1] vezes')
   })
 
   it('should call event on button click', async () => {
